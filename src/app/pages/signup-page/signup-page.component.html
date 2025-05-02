@@ -1,0 +1,109 @@
+<div class="container mt-5 mb-5">
+    <div class="card form-container">
+        <div class="card-header">
+            Create Account
+        </div>
+        <div class="card-body">
+            <!-- Ensure the OTP field is inside the form -->
+            <form [formGroup]="customerFormInfo">
+                <!-- Email -->
+                <div class="mb-3">
+                    <label class="form-label" for="email">Email Address</label>
+                    <div class="input-group">
+                        <input class="form-control" formControlName="email" id="email" name="email" type="email"
+                            placeholder="Enter your email" required>
+                        <div class="input-group-append">
+                            <button class="emailVerificationBtn btn btn-success" (click)="sendOTP()" type="button">
+                                Send OTP
+                            </button>
+                        </div>
+                    </div>
+                    <div id="emailError" class="text-danger"></div>
+                </div>
+
+
+                <!-- OTP Section (Moved Inside the Form) -->
+                @if (isOtpSended()) {
+                <div class="mb-3 otpDiv">
+                    <label class="form-label" for="otpNumber">Enter OTP:</label>
+                    <input class="form-control" formControlName="otpNumber" type="text" id="otpNumber" name="otpNumber"
+                        maxlength="6" pattern="[0-9]{6}" placeholder="OTP" required>
+                    <div id="otpError" class="text-danger"></div>
+                    <button id="verifyUserBtn" class="form-btn btn btn-success" (click)="verifyOtp()" type="button">Verify</button>
+                </div>
+                }
+
+
+
+                <!-- Submit Button -->
+                @if(isOtpCorrect()){
+                <div id="validatedDetails">
+                    <!-- First Name -->
+                    <div style="display: flex; width: 100%;">
+                        <div class="mb-3" style="width: 100%;">
+                            <label class="form-label" for="firstName">First Name</label>
+                            <input class="form-control" formControlName="firstName" id="firstName" name="firstName"
+                                pattern="[a-zA-Z\s]+" placeholder="Enter your first name" required type="text">
+                            <div id="firstNameError" class="text-danger"></div>
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="mb-3 mx-2" style="width: 100%;">
+                            <label class="form-label" for="lastName">Last Name</label>
+                            <input class="form-control" formControlName="lastName" id="lastName" pattern="[a-zA-Z\s]+"
+                                name="lastName" placeholder="Enter your last name" required type="text">
+                            <div id="lastNameError" class="text-danger"></div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Number -->
+                    <div class="mb-3">
+                        <label class="form-label" for="mobile">Mobile Number</label>
+                        <input class="form-control" formControlName="mobile" id="mobile" name="mobile"
+                            pattern="[0-9]{10}" placeholder="Enter your mobile number" type="tel" required>
+                        <div id="mobileError" class="text-danger"></div>
+                    </div>
+
+                    <!-- Purpose -->
+                    <div class="mb-3">
+                        <label class="form-label" for="category">Purpose</label>
+                        <select class="form-control" formControlName="role" id="category" name="role" required>
+                            <option value="CUSTOMER">Customer</option>
+                            <option value="SELLER">Seller</option>
+                        </select>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="mb-3">
+                        <label class="form-label" for="address">Address</label>
+                        <input class="form-control" formControlName="address" id="address" name="address"
+                            placeholder="Enter your address" required type="text">
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-3 position-relative">
+                        <label class="form-label" for="password">Password</label>
+                        <input class="form-control" formControlName="password" id="password" name="password"
+                            placeholder="Enter your password" required type="password">
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="mb-3">
+                        <label class="form-label" for="confirmPassword">Confirm Password</label>
+                        <input class="form-control" formControlName="confirmPassword" id="confirmPassword"
+                            name="confirmPassword" placeholder="Re-enter your password" required type="password">
+                    </div>
+                </div>
+
+                <button id="signupBtn" class="form-btn btn btn-primary" (click)="onSubmit()" type="submit">Sign
+                    Up</button>
+                }
+            </form>
+
+            <!-- Links for Login -->
+            <div class="links mt-3 text-center">
+                <p>Already have an account? <a href="/login-page">Login</a></p>
+            </div>
+        </div>
+    </div>
+</div>

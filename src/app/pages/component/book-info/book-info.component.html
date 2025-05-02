@@ -1,0 +1,49 @@
+<div class="container bookOuterDiv mt-5">
+    <!-- Book Details Section -->
+    <div class="card shadow-lg border-0 rounded">
+        <div class="row g-0">
+            
+            <!-- Book Image -->
+            <div class="col-md-4 text-center p-4 bg-light">
+                <img [src]="singleBook?.image" alt="Book Image" class="img-fluid rounded shadow-sm">
+            </div>
+
+            <!-- Book Information -->
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h2 class="card-title text-primary fw-bold">{{singleBook?.title}}</h2>
+
+                    <!-- Pricing Details -->
+                    <div class="pricing-details d-flex align-items-center">
+                        <h4 class="text-success me-3 fw-bold">₹{{singleBook?.sellingPrice}}</h4>
+                        <h5 class="text-danger text-decoration-line-through">₹{{singleBook?.actualPrice}}</h5>
+                        <span class="badge bg-success ms-3">{{singleBook?.discount}}% OFF</span>
+                    </div>
+
+                    <!-- Author Information -->
+                    <p class="text-muted"><strong>Author:</strong> {{singleBook?.authorName}}</p>
+
+                    <!-- Metadata -->
+                    <div class="book-metadata text-secondary">
+                        <p><i class="bi bi-book"></i> <strong>Category:</strong> {{singleBook?.bookCategory}}</p>
+                        <p><i class="bi bi-building"></i> <strong>Publication:</strong> {{singleBook?.publicationName}}</p>
+                        <p><i class="bi bi-upc"></i> <strong>ISBN-10:</strong> {{singleBook?.isbn10}}</p>
+                        <p><i class="bi bi-upc-scan"></i> <strong>ISBN-13:</strong> {{singleBook?.isbn13}}</p>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex gap-3 mt-4">
+                        <button class="btn btn-warning fw-bold px-4 shadow-sm"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+                        <button class="btn btn-outline-secondary fw-bold px-4 shadow-sm"><i class="bi bi-bag-check"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Description -->
+    <div class="card mt-5 shadow-lg border-0 rounded p-4">
+        <h4 class="text-secondary fw-bold"><i class="bi bi-info-circle"></i> Book Description</h4>
+        <p class="text-muted">{{singleBook?.description}}</p>
+    </div>
+</div>
